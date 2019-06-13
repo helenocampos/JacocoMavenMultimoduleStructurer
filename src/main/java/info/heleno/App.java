@@ -71,7 +71,9 @@ public class App {
                 plugin.addExecution(pluginExecution);
 
                 Build build = parentPom.getBuild();
-
+                if(build == null){
+                    build = new Build();
+                }
                 build.setPlugins(removePlugin("jacoco-maven-plugin", build.getPlugins()));
                 build.addPlugin(plugin);
                 parentPom.setBuild(build);
